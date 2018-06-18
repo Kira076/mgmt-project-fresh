@@ -8,7 +8,7 @@ var state = {
 exports.connect = function(url, opts){
   if (state.db) return ; //If there's already a database connection then finish
 
-  mongoose.connect(url, opts); //Connect to supplied url
+  mongoose.connect(url); //Connect to supplied url
   mongoose.Promise = global.Promise; //Get mongoose to use global promise
   var db = mongoose.connection; //Get the connection as an object
 
