@@ -7,7 +7,7 @@ var stylus = require('stylus');
 var mongo = require('mongodb');
 
 var db = require('./db');
-var url = 'mongodb://localhost:27017/mgmt';
+var url = 'mongodb://AdminJosh:electrome_chanical@localhost:27017/mgmt';
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
