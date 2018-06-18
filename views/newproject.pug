@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h3= title
+  form#form_add_proj(name="addproj", method="post",
+  action="/projects/add")
+    span Title
+    span &nbsp;
+    input#input_name(type="text", placeholder="Episode",
+    name="title")
+    br
+    br
+    span Director
+    span &nbsp;
+    input#input_director(list="director_data",
+    name="director")
+    datalist#director_data
+      each crew in crewlist
+        option#crew_option_item(value=crew._id) #{crew.name}
+    br
+    br
+    span Start Date
+    span &nbsp;
+    input#input_start(type="date", placeholder="01/01/2018",
+    name="start_date")
+    br
+    button#submit_crew(type="submit") submit

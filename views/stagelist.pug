@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  a(href="/") Return Home
+  h3.
+    Stage List
+  table
+    tr
+      th Episode
+      th Stage Name
+      th Start Date
+      th Finish Date
+      th Deadline
+      th Lead
+      th Primary
+    each stage in stagelist
+      tr#stage_list_item
+        td
+          a(href="/stages/stage/"+stage.episode._id) #{stage.episode.title}
+        td #{stage.stage_name}
+        td #{moment(stage.start_date).format("YYYY-MM-DD")}
+        if stage.finish_date
+          td #{moment(stage.finish_date).format("YYYY-MM-DD")}
+        else
+          td
+        td #{moment(stage.deadline).format("YYYY-MM-DD")}
+        if stage.lead  
+          td
+            if stage.lead.id
+              a(href="/crew/member/"+stage.lead._id) #{stage.lead.name}
+            else
+              span #{stage.lead.name}
+        else
+          td
+        td
+          if stage.primary.id
+            a(href="/crew/member/"+stage.primary.id) #{stage.primary.name}
+          else
+            span #{stage.primary.name}

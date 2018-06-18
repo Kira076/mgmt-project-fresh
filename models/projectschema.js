@@ -1,0 +1,32 @@
+var mongoose = require('mongoose');
+var express = require('express');
+
+var Schema = mongoose.Schema;
+
+var ProjectSchema = new Schema({
+  title: { type: String, required: true, index: true, unique: true },
+  start_date: { type: Date, required: true, index: true },
+  finish_date: { type: Date },
+  director: { type: Schema.Types.ObjectId, ref: 'Credit', required: true },
+  other_credits: [{ type: Schema.Types.ObjectId, ref: 'Credit' }],
+  stages: [{ type: Schema.Types.ObjectId, ref: 'Stage' }],
+  notes: [{ type: Schema.Types.ObjectId, ref: 'Note' }],
+  flags: [{  }],
+  checks: [{  }]
+});
+
+ProjectSchema.virtual('additional_crew').get(function(){
+  return this.additional_credits.values();
+});
+
+var ProjectModel = mongoose.model('Project', ProjectSchema);
+
+ProjectSchema.pre('init', function(data){
+  ProjectModel.populate(data, {
+    path: 'director other_credits stages notes'
+  }, function(err, proj){
+    data = proj;
+  });
+});
+
+module.exports = ProjectModel;

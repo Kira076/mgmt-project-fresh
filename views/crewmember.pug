@@ -1,0 +1,54 @@
+extends layout
+
+block content  
+  a(href="/crew/list") Back to list
+  h3.
+    Crew Profile (#{data.name})
+  h4.
+    Progress Interval
+  span #{data.interval}
+  br
+  h4.
+    Crew ID
+  span #{data._id}
+  br
+  h3.
+    Credits
+  table
+    tr
+      th Credit
+      th Credit Type
+      th Notes
+    each credit in data.credits
+      tr
+        td 
+          a(href="/credits/"+credit._id) #{credit.credit}
+        td
+          if credit.credit_type
+            span #{credit.credit_type}
+        td
+          each note in credit.notes
+            a(href="/notes/"+note._id) #{note.name}
+            br
+    tr
+      td
+      td
+      td
+      td
+        a(href="/credits/new/for/"+data._id) Add
+    h3.
+      Notes
+    table
+      tr
+        th Created
+        th Label
+        th Note
+      each note in data.notes
+        tr
+          td #{moment(note.created).format("YYYY-MM-DD")}
+          td
+            a(href="/notes/"+note._id) #{note.name}
+          td #{note.contents}
+      tr
+        td
+          a(href="/notes/new/crew/"+data._id) Add

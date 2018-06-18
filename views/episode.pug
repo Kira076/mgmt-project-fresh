@@ -1,0 +1,97 @@
+extends layout
+
+block content
+  a(href="/projects/list") Back to list
+  h3.
+    Project Details (#{data.title})
+  h4.
+    Flags and Checks
+  table
+    tr
+      th Flag Names
+      th Flag Values
+    if data.flags
+      each entry in data.flags
+        tr
+          td #{entry.type}
+          td #{entry.value}
+    if data.checks
+      each entry in data.checks
+        tr
+          td #{entry.type}
+          td #{entry.value}
+  br
+  h4.
+    Director
+  if data.director.id
+    a(href="/crew/member/"+data.director.id) #{data.director.name}
+  else
+    #{data.director.name}
+  br
+  h4.
+    Start Date
+  span #{moment(data.start_date).format("YYYY-MM-DD")}
+  br
+  h4.
+    Finish Date
+  if data.finish_date
+    span #{moment(data.finish_date).format("YYYY-MM-DD")}
+  else
+    span Unfinished
+  br
+  h4.
+    Other Credits
+  table
+    tr
+      th Credited As
+      th Credited
+    if data.other_credits
+      each credit in data.other_credits
+        tr
+          td #{credit.credit}
+          td
+            if credit.id
+              a(href="/crew/member/"+credit.id) #{credit.name}
+            else
+              span #{credit.name}
+  br
+  h4.
+    Stages
+  table
+    tr
+      th Stage
+      th Lead
+      th Primary
+      th Start
+      th Finish
+      th Deadline
+      th Notes
+    if data.stages
+      each entry in data.stages
+        tr
+          td
+            a(href="/stages/stage/"+entry._id) #{entry.stage_name}
+          td
+            if entry.lead
+              if entry.lead.id
+                a(href="/crew/member/"+entry.lead.id) #{entry.lead.name}
+              else
+                span #{entry.lead.name}
+          td
+            if entry.primary.id
+              a(href="/crew/member/"+entry.primary.id) #{entry.primary.name}
+            else
+              span #{entry.primary.name}
+          td #{moment(entry.start_date).format("YYYY-MM-DD")}
+          if entry.finish_date
+            td #{moment(entry.finish_date).format("YYYY-MM-DD")}
+          else
+            td Unfinished
+          if entry.deadline
+            td #{moment(entry.deadline).format("YYYY-MM-DD")}
+          else
+            td
+          td
+            each note in entry.notes
+              span #{note.contents}
+              br

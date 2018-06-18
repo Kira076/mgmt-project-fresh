@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h3= title
+  form#form_add_crew(name="addcrew", method="post",
+  action="/crew/add")
+    span Name
+    span &nbsp;
+    input#input_name(type="text", placeholder="crew",
+    name="crew")
+    br
+    br
+    span Role
+    input#input_role(type="text", placeholder="Unspecified",
+    name="role")
+    br
+    br
+    span Interval
+    span &nbsp;
+    input#input_interval(type="radio", value="Weekly",
+    name="interval")
+    | Weekly
+    span &nbsp;
+    input#input_interval(type="radio", value="Monthly",
+    name="interval")
+    | Monthly
+    br
+    button#submit_crew(type="submit") submit

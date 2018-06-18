@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  a(href="/") Return Home
+  h3.
+    Crew List
+  table
+    tr
+      th Name
+      th Interval
+      th Completed
+      th Queue
+      th Actions
+    each crew, i in crewlist
+      tr#crew_list_item
+        td
+          a(href="/crew/member/"+crew._id) #{crew.name}
+        td #{crew.interval}
+        td #{crew.completed}
+        td #{crew.queue}
+        td
+          a(href="/crew/delete/"+crew._id) Delete
+    tr
+      td
+      td
+      td
+      td
+      td
+        a(href="/crew/new") Add

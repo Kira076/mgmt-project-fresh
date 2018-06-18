@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  a(href="/") Return Home
+  h3.
+    Project List
+  table
+    tr
+      th Title
+      th Start Date
+      th Finish Date
+      th Director
+      th Flags
+      th Actions
+    each proj, p in projlist
+      tr#proj_list_item
+        td
+          a(href="/projects/episode/"+proj._id) #{proj.title}
+        td #{moment(proj.start_date).format("YYYY-MM-DD")}
+        td
+          if proj.finish_date
+            span #{moment(proj.finish_date).format("YYYY-MM-DD")}
+          else
+            span
+        td
+          a(href="/crew/member/"+proj.director._id) #{proj.director.name}
+        td
+          each flag in proj.flags
+            span #{flag.type}
+            br
+        td
+          a(href="/projects/delete/"+proj._id) Delete
+    tr
+      td
+      td
+      td
+      td
+      td
+      td
+        a(href="/projects/new") Add

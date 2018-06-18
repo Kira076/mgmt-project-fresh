@@ -1,0 +1,56 @@
+extends layout
+
+block content
+  a(href="/stages/list") Back to list
+  h3.
+    Stage Details (#{data.stage_name})
+  h4.
+    For episode
+  a(href="/projects/episode/"+data.episode._id) #{data.episode.title}
+  br
+  h4.
+    Lead
+  if data.lead
+    if data.lead.id
+      a(href="/crew/member/"+data.lead.id) #{data.lead.name}
+    else
+      span #{data.lead.name}
+  else
+    span None
+  br
+  h4.
+    Primary
+  if data.primary.id
+    a(href="/crew/member/"+data.primary.id) #{data.primary.name}
+  else
+    #{data.primary.name}
+  br
+  h4.
+    Start Date
+  span #{moment(data.start_date).format("YYYY-MM-DD")}
+  br
+  h4.
+    Finish Date
+  if data.finish_date
+    span #{moment(data.finish_date).format("YYYY-MM-DD")}
+  else
+    span Unfinished
+  br
+  h4.
+    Deadline
+  if data.deadline
+    span #{moment(data.deadline).format("YYYY-MM-DD")}
+  else
+    span None
+  br
+  h4.
+    Other Credits
+  if data.other_credits
+    each credit in data.other_credits
+      if credit.id
+        a(href="/crew/member/"+credit.id) #{credit.name}
+      else
+        span #{credit.name}
+      br
+  else
+    span None
