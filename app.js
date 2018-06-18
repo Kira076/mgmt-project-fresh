@@ -7,6 +7,7 @@ var stylus = require('stylus');
 var mongo = require('mongodb');
 
 var db = require('./db');
+var opts = { authSource: 'admin' };
 var url = 'mongodb://AdminJosh:electrome_chanical@localhost:27017/mgmt';
 
 var indexRouter = require('./routes/index');
@@ -28,7 +29,7 @@ app.use(cookieParser());
 app.use(stylus.middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-db.connect(url);
+db.connect(url, opts);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
