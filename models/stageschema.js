@@ -4,15 +4,15 @@ var express = require('express');
 var Schema = mongoose.Schema;
 
 var StageSchema = new Schema({
-  episode: { type: Schema.Types.ObjectId, ref: 'Project', required: true, index: true },
+  episode: { type: Schema.Types.ObjectId, ref: 'Project', required: true, index: true, autopopulate: true },
   stage_type: { type: Number, required: true },
   start_date: { type: Date, required: true, index: true },
   finish_date: { type: Date },
   deadline: { type: Date },
-  lead: { type: Schema.Types.ObjectId, ref: 'Credit' },
-  primary: { type: Schema.Types.ObjectId, ref: 'Credit', required: true },
-  other_credits: [{ type: Schema.Types.ObjectId, ref: 'Credit' }],
-  notes: [{ type: Schema.Types.ObjectId, ref: 'Note' }]
+  lead: { type: Schema.Types.ObjectId, ref: 'Credit', autopopulate: true },
+  primary: { type: Schema.Types.ObjectId, ref: 'Credit', required: true, autopopulate: true },
+  other_credits: [{ type: Schema.Types.ObjectId, ref: 'Credit', autopopulate: true }],
+  notes: [{ type: Schema.Types.ObjectId, ref: 'Note', autopopulate: true }]
 });
 
 StageSchema.virtual('stage_name').get(function(){
