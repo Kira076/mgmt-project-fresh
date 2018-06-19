@@ -7,8 +7,6 @@ var CreditSchema = new Schema({
   credit_type: { type: String },
   name: { type: String, required: true, index: true },
   id: { type: Schema.Types.ObjectId, ref: 'Crew' },
-  stages: [{ type: Schema.Types.ObjectId, ref: 'Stage' }],
-  projects: [{ type: Schema.Types.ObjectId, ref: 'Project' }],
   notes: [{ type: Schema.Types.ObjectId, ref: 'Note' }]
 });
 
