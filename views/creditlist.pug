@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  a(href="/") Return Home
+  h3.
+    Credit List
+  table
+    tr
+      th Credit
+      th Credit Type
+      th Name
+      th Crew Member
+      th Actions
+    each credit, i in creditlist
+      tr#credit_list_item
+        td
+          a(href="/credits/"+credit._id) #{credit.credit}
+        td #{credit.credit_type}
+        td #{credit.name}
+        if credit.id
+          td
+            a(href="/crew/member/"+credit.id._id) #{credit.id.name}
+        else
+          td
+            span N/A
+        td
+          a(href="/credits/delete/"+credit._id) Delete
+    tr
+      td
+      td
+      td
+      td
+      td
+        a(href="/credits/new") Add
