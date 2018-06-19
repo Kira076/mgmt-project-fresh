@@ -66,16 +66,16 @@ router.get('/delete/:creditID', function(req, res){
 });
 
 router.post('/add', function(req, res){
-  var crew_member = req.body.crew_member;
+  var crew_member = req.body.c_crew;
 
   if(crew_member == "None"){
     crew_member = undefined;
   }
 
   var credit1 = new CreditModel({
-    credit: req.body.credit,
-    name: req.body.name,
-    credit_type: req.body.type,
+    credit: req.body.c_title,
+    name: req.body.c_name,
+    credit_type: req.body.c_type,
     id: crew_member
   });
 

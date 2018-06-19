@@ -15,8 +15,8 @@ block content
     input#input_director(list="director_data",
     name="director")
     datalist#director_data
-      each crew in crewlist
-        option#crew_option_item(value=crew._id) #{crew.name}
+      each credit in creditlist
+        option#credit_option_item(value=credit._id) #{credit.name} #{credit.credit}
     br
     br
     span Start Date

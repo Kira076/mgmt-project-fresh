@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  h3= title
+  form#form_add_crew(name="addcredit", method="post",
+  action="/crew/add")
+    span Title
+    span &nbsp;
+    input#input_c_title(type="text", placeholder="Title of credit",
+    name="c_title")
+    br
+    br
+    span Type
+    span &nbsp;
+    input#input_type(type="text", placeholder="Type of credit",
+    name='c_type')
+    br
+    br
+    span Name
+    span &nbsp;
+    input#input_name(type="text", placeholder="Name on credit",
+    name="c_name")
+    br
+    br
+    span Crew Member
+    span &nbsp;
+    if target
+      input#input_crew(type="text", value=target, name="c_crew",
+      disabled)
+    else
+      input#input_crew(list="crew_data",
+      name="c_crew")
+      datalist#crew_data
+        option#crew_option_item(value="None") None
+        each crew in crewlist
+          option#crew_option_item(value=crew._id) #{crew.name}
+    br
+    button#submit_crew(type="submit") submit

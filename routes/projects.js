@@ -6,6 +6,7 @@ var Async = require('async');
 var CrewModel = require('../models/crewschema');
 var ProjectModel = require('../models/projectschema');
 var StageModel = require('../models/stageschema');
+var CreditModel = require('../models/creditschema');
 
 router.get('/list', function(req, res) {
   ProjectModel.find(null, 'title start_date finish_date director flags', function(err, proj){
@@ -36,13 +37,13 @@ router.get('/episode/:projID', function(req, res){
 });
 
 router.get('/new', function(req, res){
-  CrewModel.find({}, '_id name', function(err, crew){
+  CreditModel.find({}, '_id credit credit_type name', function(err, credits){
     if(err){
       res.send(err);
     } else {
       res.render('newproject', {
         title: 'Add Project',
-        "crewlist" : crew
+        "creditlist" : credits
       });
     }
   });
