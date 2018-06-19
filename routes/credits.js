@@ -4,7 +4,7 @@ var db = require('../db');
 var CrewModel = require('../models/crewschema');
 var ProjectModel = require('../models/projectschema');
 var StageModel = require('../models/stageschema');
-var CreditsModel = require('..models/creditschema');
+var CreditsModel = require('../models/creditschema');
 
 router.get('/list', function(req, res) {
   CreditModel.find(null, 'credit credit_type name id', function(err, credits){
