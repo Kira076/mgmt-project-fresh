@@ -2,8 +2,8 @@ extends layout
 
 block content
   h3= title
-  form#form_add_crew(name="addcredit", method="post",
-  action="/crew/add")
+  form#form_add_credit(name="addcredit", method="post",
+  action="/credits/add")
     span Title
     span &nbsp;
     input#input_c_title(type="text", placeholder="Title of credit",
@@ -35,4 +35,4 @@ block content
         each crew in crewlist
           option#crew_option_item(value=crew._id) #{crew.name}
     br
-    button#submit_crew(type="submit") submit
+    button#submit_credit(type="submit") submit
