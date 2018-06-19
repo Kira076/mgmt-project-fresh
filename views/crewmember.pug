@@ -38,24 +38,24 @@ block content
       td
       td
         a(href="/credits/new/for/"+data._id) Add
-    h3.
-      Notes
-    table
+  h3.
+    Notes
+  table
+    tr
+      th Created
+      th Label
+      th Note
+      th Actions
+    each note in data.notes
       tr
-        th Created
-        th Label
-        th Note
-        th Actions
-      each note in data.notes
-        tr
-          td #{moment(note.created).format("YYYY-MM-DD")}
-          td
-            a(href="/notes/"+note._id) #{note.name}
-          td #{note.contents}
-          td
-      tr
+        td #{moment(note.created).format("YYYY-MM-DD")}
         td
+          a(href="/notes/"+note._id) #{note.name}
+        td #{note.contents}
         td
-        td
-        td
-          a(href="/notes/new/crew/"+data._id) Add
+    tr
+      td
+      td
+      td
+      td
+        a(href="/notes/new/crew/"+data._id) Add
