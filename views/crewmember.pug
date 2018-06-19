@@ -19,6 +19,7 @@ block content
       th Credit
       th Credit Type
       th Notes
+      th Actions
     each credit in data.credits
       tr
         td 
@@ -30,6 +31,7 @@ block content
           each note in credit.notes
             a(href="/notes/"+note._id) #{note.name}
             br
+        td
     tr
       td
       td
@@ -43,12 +45,17 @@ block content
         th Created
         th Label
         th Note
+        th Actions
       each note in data.notes
         tr
           td #{moment(note.created).format("YYYY-MM-DD")}
           td
             a(href="/notes/"+note._id) #{note.name}
           td #{note.contents}
+          td
       tr
+        td
+        td
+        td
         td
           a(href="/notes/new/crew/"+data._id) Add
