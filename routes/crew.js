@@ -51,7 +51,6 @@ router.get('/delete/:crewID', function(req, res){
 router.post('/add', function(req, res){
   var crew1 = new CrewModel({
     name: req.body.crew,
-    role: req.body.role,
     interval: req.body.interval
   });
 
