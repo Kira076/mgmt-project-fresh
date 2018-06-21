@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../db');
+var moment = require('moment');
 var CrewModel = require('../models/crewschema');
 var ProjectModel = require('../models/projectschema');
 var StageModel = require('../models/stageschema');
@@ -15,7 +16,8 @@ router.get('/:noteID', function(req, res){
       res.send(err);
     } else {
       res.render('note', {
-        "data" : note
+        "data" : note,
+        "moment" : moment
       });
     }
   });
