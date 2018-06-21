@@ -28,9 +28,10 @@ block content
           if credit.credit_type
             span #{credit.credit_type}
         td
-          each note in credit.notes
-            a(href="/notes/"+note._id) #{note.name}
-            br
+          if credit.notes
+            each note in credit.notes
+              a(href="/notes/"+note._id) #{note.name}
+              br
         td
     tr
       td
