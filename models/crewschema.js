@@ -9,7 +9,7 @@ var CrewSchema = new Schema({
   completed: { type: Number, default: 0 },
   queue: { type: Number, default: 0 },
   credits: [{ type: Schema.Types.ObjectId, ref: 'Credit', autopopulate: true }],
-  notes: [{ type: Schema.Types.ObjectId, ref: 'Note', autopopulate: true }]
+  //notes: [{ type: Schema.Types.ObjectId, ref: 'Note', autopopulate: true }]
 });
 
 CrewSchema.virtual('url').get(function(){
