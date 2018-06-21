@@ -32,26 +32,28 @@ router.get('/credit/:creditID', function(req, res){
   });
 });
 
-router.get('/new/for/:crewID', function(req, res){
-  var Id1 = req.params.crewID;
+router.get('/new/:jsonObj', function(req, res){
+  var data = JSON.parse(req.params.jsonObj);
 
-  res.render('newcredit', {
-    title : 'Add Credit',
-    "target" : Id1
-  });
-});
-
-router.get('/new', function(req, res){
-  CrewModel.find({}, '_id name', function(err, crew){
-    if(err){
-      res.send(err);
-    } else {
-      res.render('newcredit', {
-        title : 'Add Credit',
-        "crewlist" : crew
-      });
-    }
-  });
+  if(data == {}){
+    CrewModel.find({}, '_id name', function(err, crew){
+      if(err){
+        res.send(err);
+      } else {
+        res.render('newcredit', {
+          title: 'Add Credit',
+          action: "choose",
+          crewlist: crew,
+        });
+      }
+    });
+  } else {
+    res.render('newcredit', {
+      title: 'Add Credit',
+      action: "for",
+      target: data.target
+    });
+  }
 });
 
 router.get('/delete/:creditID', function(req, res){
@@ -61,6 +63,28 @@ router.get('/delete/:creditID', function(req, res){
       console.log(err);
     } else {
       res.render('creditdeleted');
+    }
+  });
+});
+
+router.get('/remove/:jsonObj', function(req, res){
+  var data = JSON.parse(req.params.jsonObj);
+
+  CrewModel.updateOne({ _id: data.crew }, { "$pull" : { credits: data.credit } }, function(err, raw){
+    if(err){
+      res.send(err);
+    } else {
+      CreditModel.updateOne({ _id: data.credit}, { crew_id: undefined }, function(err, raw){
+        if(err){
+          res.render('creditremoved', {
+            failed: true,
+            error: err,
+            raw_output: raw
+          });
+        } else {
+          res.render('creditremoved');
+        }
+      });
     }
   });
 });
@@ -112,38 +136,36 @@ router.post('/add', function(req, res){
   }
 });
 
-router.get('/attach/tocredit/:creditID', function(req, res){
-  var Id1 = req.params.creditID;
+router.get('/attach/:jsonObj', function(req, res){
+  var data = JSON.parse(req.params.jsonObj);
 
-  CrewModel.find({}, '_id name', function(err, crew){
-    if(err){
-      res.send(err);
-    } else {
-      res.render('attachcredit', {
-        title : 'Attach Credit',
-        "credit_target" : Id1,
-        "crewlist" : crew,
-        "origin" : "credit"
-      });
-    }
-  });
-});
-
-router.get('/attach/tocrew/:crewID', function(req, res){
-  var Id1 = req.params.crewID;
-
-  CreditModel.find({}, '_id name', function(err, credits){
-    if(err){
-      res.send(err);
-    } else {
-      res.render('attachcredit', {
-        title : 'Attach Credit',
-        "crew_target" : Id1,
-        "creditlist" : credits,
-        "origin" : "crew"
-      });
-    }
-  });
+  if(data.action == "toCredit"){
+    CrewModel.find({}, '_id name', function(err, crew){
+      if(err){
+        res.send(err);
+      } else {
+        res.render('attachcredit', {
+          title: 'Attach Credit',
+          action: data.action,
+          credit: data.credit,
+          crewlist: crew,
+        });
+      }
+    });
+  } else if(data.action == "toCrew"){
+    CreditModel.find({}, '_id name', function(err, credits){
+      if(err){
+        res.send(err);
+      } else {
+        res.render('attachcredit', {
+          title: 'Attach Credit',
+          action: data.action,
+          crew: data.crew,
+          creditlist: credits
+        });
+      }
+    });
+  }
 });
 
 router.post('/attachcomplete', function(req, res){

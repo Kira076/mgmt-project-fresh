@@ -56,6 +56,30 @@ block content
               span #{credit.name}
   br
   h4.
+    Notes
+  table
+    tr
+      th Created
+      th Label
+      th Note
+      th Actions
+    each note in data.notes
+      tr
+        td #{moment(note.created).format("YYYY-MM-DD")}
+        td
+          a(href="/notes/"+note._id) #{note.name}
+        td #{note.contents}
+        td
+          a(href="/notes/delete/"+note._id) Delete
+    tr
+      td
+      td
+      td
+      td
+        - var url_data = { type: "project", target: data._id };
+        - var string_data = JSON.stringify(url_data);
+        a(href="/notes/new/"+string_data) Add
+  h4.
     Stages
   table
     tr
@@ -93,5 +117,5 @@ block content
             td
           td
             each note in entry.notes
-              span #{note.contents}
+              a(href="/notes/"+note._id) #{note.name}
               br

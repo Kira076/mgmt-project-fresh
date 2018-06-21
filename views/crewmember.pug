@@ -32,12 +32,17 @@ block content
             a(href="/notes/"+note._id) #{note.name}
             br
         td
+          - var tbr = { credit: credit._id, crew: data._id };
+          - var string_tbr = JSON.stringify(tbr);
+          a(href="/credits/remove/"+string_tbr)
     tr
       td
       td
       td
       td
-        a(href="/credits/new/for/"+data._id) Add
+        - var url_obj = { target: data._id };
+        - var string_obj = JSON.stringify(url_obj);
+        a(href="/credits/new/"+string_obj) Add
         br
         a(href="/credits/attach/tocrew/"+data._id) Attach
   h3.
@@ -61,4 +66,6 @@ block content
       td
       td
       td
-        a(href="/notes/new/crew/"+data._id) Add
+        - var url_data = { type: "crew", target: data._id };
+        - var string_data = JSON.stringify(url_data);
+        a(href="/notes/new/"+string_data) Add

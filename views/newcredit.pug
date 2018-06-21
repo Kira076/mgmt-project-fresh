@@ -24,12 +24,12 @@ block content
     br
     span Crew Member
     span &nbsp;
-    if target
+    if action == "for"
       input#input_crew_dummy(type="text", value=target, name="c_crew_dummy",
       disabled)
       input#input_crew(type="text", value=target, name="c_crew",
       hidden)
-    else
+    else if action == "choose"
       input#input_crew(list="crew_data",
       name="c_crew")
       datalist#crew_data

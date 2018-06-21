@@ -23,43 +23,13 @@ router.get('/:noteID', function(req, res){
   });
 });
 
-router.get('/new/crew/:crewID', function(req, res){
-  var Id1 = req.params.crewID;
+router.get('/new/:jsonObj', function(req, res){
+  var data = JSON.parse(req.params.jsonObj);
 
   res.render('newnote', {
     title: 'Add Note',
-    type: 'crew',
-    "target" : Id1
-  });
-});
-
-router.get('/new/credits/:creditID', function(req, res){
-  var Id1 = req.params.creditID;
-
-  res.render('newnote', {
-    title: 'Add Note',
-    type: 'credit',
-    "target" : Id1
-  });
-});
-
-router.get('/new/projects/:projectID', function(req, res){
-  var Id1 = req.params.projectID;
-
-  res.render('newnote', {
-    title: 'Add Note',
-    type: 'project',
-    "target" : Id1
-  });
-});
-
-router.get('/new/stage/:stageID', function(req, res){
-  var Id1 = req.params.stageID;
-
-  res.render('newnote', {
-    title: 'Add Note',
-    type: 'stage',
-    "target" : Id1
+    type: data.type,
+    target: data.target
   });
 });
 

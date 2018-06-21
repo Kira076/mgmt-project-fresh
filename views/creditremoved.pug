@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  if failed == true
+    h1.
+      Error deleting:
+    span #{error}
+    br
+    h4.
+      Full output:
+    span #{raw_output}
+  else
+    h1.
+      Deleted Successfully
+  a(href='/credits/list') Back to list
+  

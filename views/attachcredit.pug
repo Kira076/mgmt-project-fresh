@@ -6,10 +6,10 @@ block content
   action="/credits/attachcomplete")
     span Credit ID
     span &nbsp;
-    if credit_target
-      input#input_credit_dummy(type="text", value=credit_target, name="credit_dummy",
+    if action == "toCredit"
+      input#input_credit_dummy(type="text", value=credit, name="credit_dummy",
       disabled)
-      input#input_credit(type="text", value=credit_target, name="credit",
+      input#input_credit(type="text", value=credit, name="credit",
       hidden)
     else
       input#input_credit(list="credit_data",
@@ -20,10 +20,10 @@ block content
     br
     span Crew Member
     span &nbsp;
-    if crew_target
-      input#input_crew_dummy(type="text", value=crew_target, name="crewmember_dummy",
+    if action == "toCrew"
+      input#input_crew_dummy(type="text", value=crew, name="crewmember_dummy",
       disabled)
-      input#input_crew(type="text", value=crew_target, name="crewmember",
+      input#input_crew(type="text", value=crew, name="crewmember",
       hidden)
     else
       input#input_crew(list="crew_data",
@@ -32,6 +32,6 @@ block content
         each crew in crewlist
           option#crew_option_item(value=crew._id) #{crew.name}
     br
-    input#input_origin(type="text", value=origin, name="origin",
+    input#input_origin(type="text", value=action, name="origin",
     hidden)
     button#submit_credit(type="submit") submit

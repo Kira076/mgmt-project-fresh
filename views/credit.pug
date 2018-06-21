@@ -15,7 +15,11 @@ block content
   h4.
     Crew Member
   if data.id
-    a(href="/crew/member"+data.id._id) #{data.id.name}
+    a(href="/crew/member/"+data.id._id) #{data.id.name}
+    br
+    - var tbr = { credit: data._id, crew: data.id._id };
+    - var string_tbr = JSON.stringify(tbr);
+    a(href="/credits/remove/"+string_tbr) Remove
   else
     a(href="/credits/attach/tocredit/"+data._id) Attach
   br
@@ -39,4 +43,6 @@ block content
       td
       td
       td
-        a(href="/notes/new/credits/"+data._id) Add
+        - var url_data = { type: "credit", target: data._id };
+        - var string_data = JSON.stringify(url_data);
+        a(href="/notes/new/"+string_data) Add

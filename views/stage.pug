@@ -54,3 +54,27 @@ block content
       br
   else
     span None
+  h4.
+    Notes
+  table
+    tr
+      th Created
+      th Label
+      th Note
+      th Actions
+    each note in data.notes
+      tr
+        td #{moment(note.created).format("YYYY-MM-DD")}
+        td
+          a(href="/notes/"+note._id) #{note.name}
+        td #{note.contents}
+        td
+          a(href="/notes/delete/"+note._id) Delete
+    tr
+      td
+      td
+      td
+      td
+        - var url_data = { type: "stage", target: data._id };
+        - var string_data = JSON.stringify(url_data);
+        a(href="/notes/new/"+string_data) Add
