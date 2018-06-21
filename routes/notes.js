@@ -10,7 +10,7 @@ var NoteModel = require('../models/noteschema');
 router.get('/:noteID', function(req, res){
   var Id1 = req.params.noteID;
 
-  NotesModel.findOne({ _id: Id1 }, function(err, note){
+  NoteModel.findOne({ _id: Id1 }, function(err, note){
     if(err){
       res.send(err);
     } else {
@@ -101,7 +101,7 @@ router.post('/add', function(req, res){
         if(err){
           res.send(err);
         } else {
-          res.redirect('/'+note1._id);
+          res.redirect('/notes/'+note1._id);
         }
       });
     }
