@@ -14,7 +14,7 @@ block content
     each credit, i in creditlist
       tr#credit_list_item
         td
-          a(href="/credits/"+credit._id) #{credit.credit}
+          a(href="/credits/credit/"+credit._id) #{credit.credit}
         td #{credit.credit_type}
         td #{credit.name}
         if credit.id
