@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h3= title
+  form#form_add_note(name="addnote", method="post",
+  action="/notes/add")
+    span Note Name
+    span &nbsp;
+    input#input_note_name(type="text", placeholder="Name of note",
+    name="name")
+    br
+    br
+    span Note Contents
+    span &nbsp;
+    textarea#input_note_contents(name="contents", placeholder="Contents of note", rows=6, cols=30,
+    required)
+    input#input_note_type(type="text", value=type,
+    name="type", hidden)
+    input#input_note_target(type="text", value=target,
+    name="target", hidden)
+    br
+    button#submit_credit(type="submit") submit

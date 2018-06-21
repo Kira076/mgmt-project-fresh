@@ -23,7 +23,7 @@ block content
     each credit in data.credits
       tr
         td 
-          a(href="/credits/"+credit._id) #{credit.credit}
+          a(href="/credits/credit/"+credit._id) #{credit.credit}
         td
           if credit.credit_type
             span #{credit.credit_type}

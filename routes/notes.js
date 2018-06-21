@@ -80,7 +80,6 @@ router.post('/add', function(req, res){
   });
 
   var type;
-  var refer;
 
   if(req.body.type == 'crew'){
     type = CrewModel;
