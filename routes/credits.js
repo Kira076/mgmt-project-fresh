@@ -84,6 +84,9 @@ router.post('/add', function(req, res){
     "crew_id" : crew_member
   });
 
+  console.log("Credit ID:");
+  console.log(credit1._id);
+
   if(crew_member){
     credit1.save(function(err){
       if(err){
