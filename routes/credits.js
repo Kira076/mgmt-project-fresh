@@ -85,11 +85,11 @@ router.post('/add', function(req, res){
   });
 
   if(crew_member){
-    CrewModel.updateOne({ _id: crew_member }, { "$push": { "credits": credit1._id } }, function(err, raw){
+    credit1.save(function(err){
       if(err){
-        res.send(err);
+        console.log(err);
       } else {
-        credit1.save(function(err){
+        CrewModel.updateOne({ _id: crew_member }, { "$push": { "credits": credit1._id } }, function(err, raw){
           if(err){
             res.send(err);
           } else {
