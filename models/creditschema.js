@@ -6,7 +6,7 @@ var CreditSchema = new Schema({
   credit: { type: String, required: true, index: true },
   credit_type: { type: String },
   name: { type: String, required: true, index: true },
-  id: { type: Schema.Types.ObjectId, ref: 'Crew', autopopulate: true },
+  crew_id: { type: Schema.Types.ObjectId, ref: 'Crew', autopopulate: true },
   notes: [{ type: Schema.Types.ObjectId, ref: 'Note', autopopulate: true }]
 });
 

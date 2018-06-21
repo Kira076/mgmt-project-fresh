@@ -36,7 +36,7 @@ router.get('/new/for/:crewID', function(req, res){
   var Id1 = req.params.crewID;
 
   res.render('newcredit', {
-    title: 'Add Credit',
+    title : 'Add Credit',
     "target" : Id1
   });
 });
@@ -47,7 +47,7 @@ router.get('/new', function(req, res){
       res.send(err);
     } else {
       res.render('newcredit', {
-        title: 'Add Credit',
+        title : 'Add Credit',
         "crewlist" : crew
       });
     }
@@ -73,10 +73,10 @@ router.post('/add', function(req, res){
   }
 
   var credit1 = new CreditModel({
-    credit: req.body.c_title,
-    name: req.body.c_name,
-    credit_type: req.body.c_type,
-    id: crew_member
+    "credit" : req.body.c_title,
+    "name" : req.body.c_name,
+    "credit_type" : req.body.c_type,
+    "crew_id" : crew_member
   });
 
   if(crew_member){
@@ -112,9 +112,10 @@ router.get('/attach/tocredit/:creditID', function(req, res){
       res.send(err);
     } else {
       res.render('attachcredit', {
-        title: 'Attach Credit',
-        credit_target: Id1,
-        "crewlist" : crew
+        title : 'Attach Credit',
+        "credit_target" : Id1,
+        "crewlist" : crew,
+        "origin" : "credit"
       });
     }
   });
@@ -128,9 +129,10 @@ router.get('/attach/tocrew/:crewID', function(req, res){
       res.send(err);
     } else {
       res.render('attachcredit', {
-        title: 'Attach Credit',
-        crew_target: Id1,
-        creditlist: credits
+        title : 'Attach Credit',
+        "crew_target" : Id1,
+        "creditlist" : credits,
+        "origin" : "crew"
       });
     }
   });
@@ -140,11 +142,12 @@ router.post('/attachcomplete', function(req, res){
   var crewmember = req.body.crewmember;
   var credit = req.body.credit;
 
+  
   CrewModel.updateOne({ _id: crewmember }, { "$push": { "credits": credit } }, function(err, raw){
     if(err){
       res.send(err);
     } else {
-      CreditModel.updateOne({ _id: credit }, { "$push": { "id": crewmember } }, function(err, raw){
+      CreditModel.updateOne({ _id: credit }, { "$push": { "crew_id": crewmember } }, function(err, raw){
         if(err){
           res.send(err);
         } else {

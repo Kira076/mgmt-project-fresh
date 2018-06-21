@@ -28,4 +28,6 @@ block content
         each crew in crewlist
           option#crew_option_item(value=crew._id) #{crew.name}
     br
+    input#input_origin(type="text", value=origin, name="origin",
+    hidden)
     button#submit_credit(type="submit") submit
