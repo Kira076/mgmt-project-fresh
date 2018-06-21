@@ -53,8 +53,9 @@ block content
         td #{moment(note.created).format("YYYY-MM-DD")}
         td
           a(href="/notes/"+note._id) #{note.name}
-          td #{note.contents}
-          td
+        td #{note.contents}
+        td
+          a(href="/notes/delete/"+note._id) Delete
     tr
       td
       td
