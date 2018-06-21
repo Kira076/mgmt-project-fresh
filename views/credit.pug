@@ -14,14 +14,16 @@ block content
   br
   h4.
     Crew Member
-  if data.id
-    a(href="/crew/member/"+data.id._id) #{data.id.name}
+  if data.crew_id
+    a(href="/crew/member/"+data.crew_id._id) #{data.crew_id.name}
     br
-    - var tbr = { credit: data._id, crew: data.id._id };
+    - var tbr = { credit: data._id, crew: data.crew_id._id };
     - var string_tbr = JSON.stringify(tbr);
     a(href="/credits/remove/"+string_tbr) Remove
   else
-    a(href="/credits/attach/tocredit/"+data._id) Attach
+    - var url_obj = { action: 'toCredit', credit: data._id };
+    - var string_obj = JSON.stringify(url_obj);
+    a(href="/credits/attach/"+stringObj) Attach
   br
   h3.
     Notes

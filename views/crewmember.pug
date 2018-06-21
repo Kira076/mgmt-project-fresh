@@ -44,7 +44,9 @@ block content
         - var string_obj = JSON.stringify(url_obj);
         a(href="/credits/new/"+string_obj) Add
         br
-        a(href="/credits/attach/tocrew/"+data._id) Attach
+        - var url_obj = { action: 'toCrew', crew: data._id };
+        - var string_obj = JSON.stringify(url_obj)
+        a(href="/credits/attach/"+string_obj) Attach
   h3.
     Notes
   table
