@@ -79,11 +79,75 @@ router.post('/add', function(req, res){
     id: crew_member
   });
 
-  credit1.save(function(err){
+  if(crew_member){
+    CrewModel.updateOne({ _id: crew_member }, { "$push": { "credits": credit1._id } }, function(err, raw){
+      if(err){
+        res.send(err);
+      } else {
+        credit1.save(function(err){
+          if(err){
+            res.send(err);
+          } else {
+            res.redirect('list');
+          }
+        });
+      }
+    });
+  } else {
+    credit1.save(function(err){
+      if(err){
+        console.log(err);
+      } else {
+        res.redirect('list');
+      }
+    });
+  }
+});
+
+router.get('/attach/tocrew/:creditID', function(req, res){
+  var Id1 = req.params.creditID;
+
+  CrewModel.find({}, '_id name', function(err, crew){
     if(err){
-      console.log(err);
+      res.send(err);
     } else {
-      res.redirect('list');
+      res.render('attachcredit', {
+        title: 'Attach Credit',
+        credit_target: Id1,
+        "crewlist" : crew
+      });
+    }
+  });
+});
+
+router.get('/attach/tocred/:crewID', function(req, res){
+  var Id1 = req.params.crewID;
+
+  CreditModel.find({}, '_id name', function(err, credits){
+    if(err){
+      res.send(err);
+    } else {
+      res.render('attachcredit', {
+        title: 'Attach Credit',
+        crew_target: Id1,
+        creditlist: credits
+      });
+    }
+  });
+});
+
+router.post('/attachcomplete', function(req, res){
+  CrewModel.updateOne({ _id: req.body.crewmember }, { "$push": { "credits": req.body.credit } }, function(err, raw){
+    if(err){
+      res.send(err);
+    } else {
+      CreditModel.updateOne({ _id: req.body.credit }, { "$push": { "id": req.body.crewmember } }, function(err, raw){
+        if(err){
+          res.send(err);
+        } else {
+          res.redirect('/credits/credit/'+req.body.credit);
+        }
+      });
     }
   });
 });

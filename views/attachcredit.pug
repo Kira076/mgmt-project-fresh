@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h3= title
+  form#form_atach_credit(name="attachcredit", method="post",
+  action="/credits/attachcomplete")
+    span Credit ID
+    span &nbsp;
+    if credit_target
+      input#input_credit(type="text", value=credit_target, name="credit",
+      disabled)
+    else
+      input#input_credit(list="credit_data",
+      name="credit")
+      datalist#credit_data
+        each cred in credits
+          option#credit_option_item(value=cred._id) #{cred.credit}: #{cred.name}
+    br
+    span Crew Member
+    span &nbsp;
+    if crew_target
+      input#input_crew(type="text", value=crew_target, name="crewmember",
+      disabled)
+    else
+      input#input_crew(list="crew_data",
+      name="crewmember")
+      datalist#crew_data
+        each crew in crewlist
+          option#crew_option_item(value=crew._id) #{crew.name}
+    br
+    button#submit_credit(type="submit") submit

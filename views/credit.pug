@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  a(href="/credits/list") Back to list
+  h3.
+    Credit Details (#{data.credit}: #{data.name})
+  h4.
+    Credit Type
+  span #{data.credit_type}
+  br
+  h4.
+    Credit ID
+  span #{data._id}
+  br
+  h4.
+    Crew Member
+  if data.id
+    a(href="/crew/member"+data.id._id) #{data.id.name}
+  else
+    a(href="/credits/attach/"+data._id) Attach
+  br
+  h3.
+    Notes
+  table
+    tr
+      th Created
+      th Label
+      th Note
+      th Actions
+    each note in data.notes
+      tr
+        td #{moment(note.created).format("YYYY-MM-DD")}
+        td
+          a(href="/notes/"+note._id) #{note.name}
+        td #{note.contents}
+        td
+    tr
+      td
+      td
+      td
+      td
+        a(href="/notes/new/credits/"+data._id) Add
