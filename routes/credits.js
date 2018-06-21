@@ -140,9 +140,10 @@ router.get('/attach/tocrew/:crewID', function(req, res){
 
 router.post('/attachcomplete', function(req, res){
   var crewmember = req.body.crewmember;
+  console.log(crewmember);
   var credit = req.body.credit;
+  console.log(credit);
 
-  
   CrewModel.updateOne({ _id: crewmember }, { "$push": { "credits": credit } }, function(err, raw){
     if(err){
       res.send(err);
