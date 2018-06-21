@@ -137,15 +137,18 @@ router.get('/attach/tocrew/:crewID', function(req, res){
 });
 
 router.post('/attachcomplete', function(req, res){
-  CrewModel.updateOne({ _id: req.body.crewmember }, { "$push": { "credits": req.body.credit } }, function(err, raw){
+  var crewmember = req.body.crewmember;
+  var credit = req.body.credit;
+
+  CrewModel.updateOne({ _id: crewmember }, { "$push": { "credits": credit } }, function(err, raw){
     if(err){
       res.send(err);
     } else {
-      CreditModel.updateOne({ _id: req.body.credit }, { "$push": { "id": req.body.crewmember } }, function(err, raw){
+      CreditModel.updateOne({ _id: credit }, { "$push": { "id": crewmember } }, function(err, raw){
         if(err){
           res.send(err);
         } else {
-          res.redirect('/credits/credit/'+req.body.credit);
+          res.redirect('/credits/credit/'+credit);
         }
       });
     }

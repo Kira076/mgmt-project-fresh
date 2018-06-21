@@ -13,7 +13,7 @@ block content
       input#input_credit(list="credit_data",
       name="credit")
       datalist#credit_data
-        each cred in credits
+        each cred in creditlist
           option#credit_option_item(value=cred._id) #{cred.credit} #{cred.name}
     br
     span Crew Member
