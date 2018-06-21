@@ -73,8 +73,10 @@ router.get('/delete/:noteID', function(req, res){
 });
 
 router.post('/add', function(req, res){
+  var create_date = new Date();
+
   var note1 = new NoteModel({
-    created: req.body.created,
+    created: create_date,
     name: req.body.name,
     contents: req.body.contents,
   });
