@@ -4,7 +4,7 @@ var db = require('../db');
 var CrewModel = require('../models/crewschema');
 var ProjectModel = require('../models/projectschema');
 var StageModel = require('../models/stageschema');
-var CreditsModel = require('..models/creditshema');
+var CreditsModel = require('..models/creditschema');
 var NotesModel = require('../models/noteschema');
 
 router.get('/:noteID', function(req, res){
