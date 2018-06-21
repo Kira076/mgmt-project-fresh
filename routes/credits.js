@@ -110,8 +110,8 @@ router.post('/add', function(req, res){
     "crew_id" : crew_member
   });
 
-  console.log("Credit ID:");
-  console.log(credit1._id);
+  console.log("Credit1");
+  console.log(credit1);
 
   if(crew_member){
     credit1.save(function(err){
