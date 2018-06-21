@@ -71,7 +71,7 @@ router.post('/add', function(req, res){
   console.log(crew_member);
 
   if(crew_member == "None"){
-    crew_member = undefined;
+    crew_member = null;
   }
 
   console.log("Crew after check: ");
