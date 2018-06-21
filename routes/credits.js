@@ -104,7 +104,7 @@ router.post('/add', function(req, res){
   }
 });
 
-router.get('/attach/tocrew/:creditID', function(req, res){
+router.get('/attach/tocredit/:creditID', function(req, res){
   var Id1 = req.params.creditID;
 
   CrewModel.find({}, '_id name', function(err, crew){
@@ -120,7 +120,7 @@ router.get('/attach/tocrew/:creditID', function(req, res){
   });
 });
 
-router.get('/attach/tocred/:crewID', function(req, res){
+router.get('/attach/tocrew/:crewID', function(req, res){
   var Id1 = req.params.crewID;
 
   CreditModel.find({}, '_id name', function(err, credits){
