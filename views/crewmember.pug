@@ -49,13 +49,14 @@ block content
       th Label
       th Note
       th Actions
-    each note in data.notes
-      tr
-        td #{moment(note.created).format("YYYY-MM-DD")}
-        td
-          a(href="/notes/"+note._id) #{note.name}
-        td #{note.contents}
-        td
+    if data.notes
+      each note in data.notes
+        tr
+          td #{moment(note.created).format("YYYY-MM-DD")}
+          td
+            a(href="/notes/"+note._id) #{note.name}
+            td #{note.contents}
+            td
     tr
       td
       td
