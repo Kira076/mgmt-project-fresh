@@ -14,7 +14,7 @@ block content
       name="credit")
       datalist#credit_data
         each cred in credits
-          option#credit_option_item(value=cred._id) #{cred.credit}: #{cred.name}
+          option#credit_option_item(value=cred._id) #{cred.credit} #{cred.name}
     br
     span Crew Member
     span &nbsp;
