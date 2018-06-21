@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var express = require('express');
+var autopop = require('mongoose-autopopulate');
 
 var Schema = mongoose.Schema;
 
