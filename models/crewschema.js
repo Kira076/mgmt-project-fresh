@@ -16,6 +16,8 @@ CrewSchema.virtual('url').get(function(){
   return '/crew/member/' + this._id;
 });
 
+CrewSchema.plugin(autopop);
+
 var CrewModel = mongoose.model('Crew', CrewSchema);
 
 module.exports = CrewModel;

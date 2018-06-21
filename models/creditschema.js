@@ -11,6 +11,8 @@ var CreditSchema = new Schema({
   notes: [{ type: Schema.Types.ObjectId, ref: 'Note', autopopulate: true }]
 });
 
+CreditSchema.plugin(autopop);
+
 var CreditModel = mongoose.model('Credit', CreditSchema);
 
 module.exports = CreditModel;
