@@ -28,10 +28,9 @@ block content
           if credit.credit_type
             span #{credit.credit_type}
         td
-          if credit.notes
-            each note in credit.notes
-              a(href="/notes/"+note._id) #{note.name}
-              br
+          each note in credit.notes
+            a(href="/notes/"+note._id) #{note.name}
+            br
         td
     tr
       td
@@ -49,14 +48,13 @@ block content
       th Label
       th Note
       th Actions
-    if data.notes
-      each note in data.notes
-        tr
-          td #{moment(note.created).format("YYYY-MM-DD")}
+    each note in data.notes
+      tr
+        td #{moment(note.created).format("YYYY-MM-DD")}
+        td
+          a(href="/notes/"+note._id) #{note.name}
+          td #{note.contents}
           td
-            a(href="/notes/"+note._id) #{note.name}
-            td #{note.contents}
-            td
     tr
       td
       td
