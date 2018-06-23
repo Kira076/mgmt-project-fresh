@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var autopop = require('mongoose-autopopulate');
+var uniquearray = require('mongoose-unique-array');
 
 var Schema = mongoose.Schema;
 
@@ -17,6 +18,7 @@ CrewSchema.virtual('url').get(function(){
 });
 
 CrewSchema.plugin(autopop);
+CrewSchema.plugin(uniquearray);
 
 var CrewModel = mongoose.model('Crew', CrewSchema);
 

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var express = require('express');
 var autopop = require('mongoose-autopopulate');
+var uniquearray = require('mongoose-unique-array');
 
 var Schema = mongoose.Schema;
 
@@ -20,6 +21,8 @@ StageSchema.virtual('stage_name').get(function(){
   var names = ['Outline', 'Storyboard', 'Animation', 'Color', 'Thumbnail', 'Pencil1', 'Retime1', 'Voice', 'Retime2', 'Music', 'Retime 3', 'SFX', 'Pencil2', 'Export'];
   return names[this.stage_type];
 });
+
+StageSchema.plugin(uniquearray);
 
 var StageModel = mongoose.model('Stage', StageSchema);
 

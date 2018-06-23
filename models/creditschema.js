@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var autopop = require('mongoose-autopopulate');
+var uniquearray = require('mongoose-unique-array');
 
 var Schema = mongoose.Schema;
 
@@ -12,6 +13,7 @@ var CreditSchema = new Schema({
 });
 
 CreditSchema.plugin(autopop);
+CreditSchema.plugin(uniquearray);
 
 var CreditModel = mongoose.model('Credit', CreditSchema);
 

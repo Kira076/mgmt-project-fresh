@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var express = require('express');
 var autopop = require('mongoose-autopopulate');
+var uniquearray = require('mongoose-unique-array');
 
 var Schema = mongoose.Schema;
 
@@ -19,6 +20,8 @@ var ProjectSchema = new Schema({
 ProjectSchema.virtual('additional_crew').get(function(){
   return this.additional_credits.values();
 });
+
+ProjectSchema.plugin(uniquearray);
 
 var ProjectModel = mongoose.model('Project', ProjectSchema);
 

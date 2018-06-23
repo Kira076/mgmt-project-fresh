@@ -80,7 +80,7 @@ router.get('/new/:jsonObj', function(req, res){
 router.post('/add', function(req, res){
   var stage1 = new StageModel({
     episode: req.body.episode,
-    type: req.body.type,
+    stage_type: req.body.type,
     start_date: req.body.start_type,
     primary: req.body.primary
   });
