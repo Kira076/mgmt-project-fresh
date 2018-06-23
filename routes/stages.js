@@ -5,6 +5,7 @@ var moment = require('moment');
 var CrewModel = require('../models/crewschema');
 var ProjectModel = require('../models/projectschema');
 var StageModel = require('../models/stageschema');
+var maps = require('../configs/maps');
 
 router.get('/list', function(req, res) {
   StageModel.find(function(err, stages){
@@ -42,6 +43,57 @@ router.get('/delete/:stageID', function(req, res){
     } else {
       res.render('stagedeleted');
     }
+  });
+});
+
+router.get('/new/:jsonObj', function(req, res){
+  var data = JSON.parse(req.params.jsonObj);
+  var credlist;
+
+  CreditMode.find({}, '_id credit name').exec()
+  .then(function(credits){
+    credlist = credits;
+    if(data == {}){
+      return ProjectModel.find({}, '_id title').exec();
+    } else {
+      return new Promise(resolve => null);
+    }
+  })
+  .then(function(result){
+    res.render('newstage', {
+      title: 'Add Stage',
+      credlist: credlist,
+      projlist: result,
+      target: data.target,
+      stage_names: maps.stage_names
+    });
+  })
+  .catch(function(error){
+    res.send(error);
+  });
+});
+
+router.post('/add', function(req, res){
+  var stage1 = new StageModel({
+    episode: req.body.episode,
+    type: req.body.type,
+    start_date: req.body.start_type,
+    primary: req.body.primary
+  });
+
+  StageModel.save(stage1)
+  .then(function(stage){
+    return ProjectModel.findOne({ _id: req.body.episode }).exec();
+  })
+  .then(function(episode){
+    episode.stages.push(stage1._id);
+    return episode.save();
+  })
+  .then(function(episode){
+    res.redirect('list');
+  })
+  .catch(function(error){
+    res.send(error);
   });
 });
 

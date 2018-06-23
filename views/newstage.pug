@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  h3= title
+  form#form_add_stage(name="addstage", method="post",
+  action="/stages/add")
+    span Type
+    span &nbsp;
+    input#input_stage_type(list="stage_name_list",
+    name="type")
+    datalist#stage_name_list
+      each name in stage_names
+        option#stage_name_option_item(value=stage_names.indexOf(name)) #{name}
+    br
+    br
+    span Episode
+    span &nbsp;
+    if projlist
+      input#input_stage_episode(list="episode_data",
+      name="episode")
+      datalist#episode_data
+        each episode in projlist
+          option#episode_option_item(value=episode._id) #{episode.title}
+    else if target
+      input#input_stage_episode_dummy(type="text", value=target, name="episode_dummy",
+      disabled)
+      input#input_stage_episode(type="text", value=target, name="episode",
+      hidden)
+    br
+    br
+    span Start Date
+    span &nbsp;
+    input#input_stage_start_date(type="date", placeholder="01/01/2018",
+    name="start_date")
+    br
+    br
+    span Primary
+    span &nbsp;
+    input#input_stage_primary(list="credit_data",
+    name="primary")
+    datalist#credit_data
+      each credit in credlist
+        option#credit_option_item(value=credit._id) #{credit.credit} #{credit.name}
+    button#submit_stage(type="submit") submit

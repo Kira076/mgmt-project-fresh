@@ -93,15 +93,10 @@ router.get('/remove/:jsonObj', function(req, res){
 
 router.post('/add', function(req, res){
   var crew_member = req.body.c_crew;
-  console.log("Crew before check: ");
-  console.log(crew_member);
 
   if(crew_member == "None"){
     crew_member = null;
   }
-
-  console.log("Crew after check: ");
-  console.log(crew_member);
 
   var credit1 = new CreditModel({
     "credit" : req.body.c_title,
@@ -109,9 +104,6 @@ router.post('/add', function(req, res){
     "credit_type" : req.body.c_type,
     "crew_id" : crew_member
   });
-
-  console.log("Credit1");
-  console.log(credit1);
 
   if(crew_member){
     credit1.save(function(err){

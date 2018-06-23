@@ -90,6 +90,7 @@ block content
       th Finish
       th Deadline
       th Notes
+      th Actions
     if data.stages
       each entry in data.stages
         tr
@@ -119,3 +120,24 @@ block content
             each note in entry.notes
               a(href="/notes/"+note._id) #{note.name}
               br
+          td
+            - var url_obj = { stage: entry._id, episode: data._id };
+            - var string_obj = JSON.stringify(url_obj);
+            a(href="/stages/remove/"+stringObj) Remove
+      tr
+        td
+        td
+        td
+        td
+        td
+        td
+        td
+        td
+          - var url_obj = { target: data._id };
+          - var string_obj = JSON.stringify(url_obj);
+          a(href="/stages/new/"+string_obj) Add
+          br
+          br
+          - var url_obj = { action: 'toEpisode', episode: data._id };
+          - var string_obj = JSON.stringify(url_obj)
+          a(href="/stagess/attach/"+string_obj) Attach
