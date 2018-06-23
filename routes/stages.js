@@ -59,7 +59,7 @@ router.get('/new/:jsonObj', function(req, res){
       return ProjectModel.find({}, '_id title').exec();
     } else {
       console.log("Returning new promise, as data was provided");
-      return new Promise(resolve => "for");
+      return new Promise((resolve, reject) => { resolve() });
     }
   })
   .then(function(result){
