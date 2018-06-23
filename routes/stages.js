@@ -5,6 +5,7 @@ var moment = require('moment');
 var CrewModel = require('../models/crewschema');
 var ProjectModel = require('../models/projectschema');
 var StageModel = require('../models/stageschema');
+var CreditModel = require('../models/creditschema');
 var maps = require('../configs/maps');
 
 router.get('/list', function(req, res) {
