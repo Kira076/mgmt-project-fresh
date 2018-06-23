@@ -50,7 +50,7 @@ router.get('/new/:jsonObj', function(req, res){
   var data = JSON.parse(req.params.jsonObj);
   var credlist;
 
-  CreditMode.find({}, '_id credit name').exec()
+  CreditModel.find({}, '_id credit name').exec()
   .then(function(credits){
     credlist = credits;
     if(data == {}){
