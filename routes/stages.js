@@ -53,11 +53,13 @@ router.get('/new/:jsonObj', function(req, res){
 
   CreditModel.find({}, '_id credit name').exec()
   .then(function(credits){
+    console.log("Able to find Credits");
     credlist = credits;
     if(data == {}){
       return ProjectModel.find({}, '_id title').exec();
     } else {
       return new Promise(resolve => "for");
+      console.log("Returning new promise, as data was provided");
     }
   })
   .then(function(result){
