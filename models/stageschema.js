@@ -22,7 +22,7 @@ StageSchema.virtual('stage_name').get(function(){
   return names[this.stage_type];
 });
 
-StageSchema.pugin(autopop);
+StageSchema.plugin(autopop);
 StageSchema.plugin(uniquearray);
 
 var StageModel = mongoose.model('Stage', StageSchema);
