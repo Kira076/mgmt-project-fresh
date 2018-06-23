@@ -35,7 +35,8 @@ router.get('/credit/:creditID', function(req, res){
 });
 
 router.get('/new/:jsonObj', function(req, res){
-  var data = JSON.parse(Buffer.from(req.params.jsonObj).toString());
+  //var rawdata = Buffer.from(req.params.jsonObj, 'base64').toString();
+  var data = JSON.parse(Buffer.from(req.params.jsonObj, 'base64').toString());
 
   if(data.fresh){
     CrewModel.find({}, '_id name', function(err, crew){
@@ -70,7 +71,7 @@ router.get('/delete/:creditID', function(req, res){
 });
 
 router.get('/remove/:jsonObj', function(req, res){
-  var data = JSON.parse(Buffer.from(req.params.jsonObj).toString());
+  var data = JSON.parse(Buffer.from(req.params.jsonObj, 'base64').toString());
 
   CrewModel.updateOne({ _id: data.crew }, { "$pull" : { credits: data.credit } }, function(err, raw){
     if(err){
@@ -131,7 +132,7 @@ router.post('/add', function(req, res){
 });
 
 router.get('/attach/:jsonObj', function(req, res){
-  var data = JSON.parse(Buffer.from(req.params.jsonObj).toString());
+  var data = JSON.parse(Buffer.from(req.params.jsonObj, 'base64').toString());
 
   if(data.action == "toCredit"){
     CrewModel.find({}, '_id name', function(err, crew){

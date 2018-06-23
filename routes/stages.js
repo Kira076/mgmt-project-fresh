@@ -48,7 +48,7 @@ router.get('/delete/:stageID', function(req, res){
 });
 
 router.get('/new/:jsonObj', function(req, res){
-  var data = JSON.parse(Buffer.from(req.params.jsonObj).toString());
+  var data = JSON.parse(Buffer.from(req.params.jsonObj, 'base64').toString());
   var credlist;
 
   CreditModel.find({}, '_id credit name').exec()
