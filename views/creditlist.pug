@@ -32,5 +32,5 @@ block content
       td
       td
         - var url_obj = { fresh: true };
-        - var string_obj = JSON.stringify(url_obj);
+        - var string_obj = btoa(JSON.stringify(url_obj));
         a(href="/credits/new/"+string_obj) Add

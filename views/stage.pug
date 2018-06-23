@@ -76,5 +76,5 @@ block content
       td
       td
         - var url_data = { type: "stage", target: data._id };
-        - var string_data = JSON.stringify(url_data);
+        - var string_data = btoa(JSON.stringify(url_data));
         a(href="/notes/new/"+string_data) Add
