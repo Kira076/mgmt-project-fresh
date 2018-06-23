@@ -81,7 +81,7 @@ router.post('/add', function(req, res){
   var stage1 = new StageModel({
     episode: req.body.episode,
     stage_type: req.body.type,
-    start_date: new Date(),
+    start_date: req.body.start_date,
     primary: req.body.primary
   });
 

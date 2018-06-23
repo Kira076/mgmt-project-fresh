@@ -13,27 +13,44 @@ block content
       th Deadline
       th Lead
       th Primary
+      th Action
     each stage in stagelist
       tr#stage_list_item
         td
-          a(href="/stages/stage/"+stage.episode._id) #{stage.episode.title}
+          a(href="/projects/episode/"+stage.episode._id) #{stage.episode.title}
         td #{stage.stage_name}
         td #{moment(stage.start_date).format("YYYY-MM-DD")}
         if stage.finish_date
           td #{moment(stage.finish_date).format("YYYY-MM-DD")}
         else
           td
-        td #{moment(stage.deadline).format("YYYY-MM-DD")}
+        if stage.deadline
+          td #{moment(stage.deadline).format("YYYY-MM-DD")}
+        else
+          td
         if stage.lead  
           td
             if stage.lead.id
-              a(href="/crew/member/"+stage.lead._id) #{stage.lead.name}
+              a(href="/credits/credit/"+stage.lead._id) #{stage.lead.name}
             else
               span #{stage.lead.name}
         else
           td
         td
           if stage.primary.id
-            a(href="/crew/member/"+stage.primary.id) #{stage.primary.name}
+            a(href="/credits/credit/"+stage.primary._id) #{stage.primary.name}
           else
             span #{stage.primary.name}
+        td
+          a(href="/stages/delete/"+stage._id) Delete
+    tr
+    td
+    td
+    td
+    td
+    td
+    td
+    td
+      - var url_obj = {};
+      - var string_obj = JSON.stringify(url_obj);
+      a(href="/stages/new/"+string_obj) Add
