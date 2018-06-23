@@ -21,6 +21,7 @@ ProjectSchema.virtual('additional_crew').get(function(){
   return this.additional_credits.values();
 });
 
+ProjectSchema.plugin(autopop);
 ProjectSchema.plugin(uniquearray);
 
 var ProjectModel = mongoose.model('Project', ProjectSchema);
