@@ -57,7 +57,7 @@ router.get('/new/:jsonObj', function(req, res){
     if(data == {}){
       return ProjectModel.find({}, '_id title').exec();
     } else {
-      return new Promise(resolve => null);
+      return new Promise(resolve => "for");
     }
   })
   .then(function(result){
