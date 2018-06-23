@@ -85,7 +85,7 @@ router.post('/add', function(req, res){
     primary: req.body.primary
   });
 
-  StageModel.save(stage1)
+  stage1.save()
   .then(function(stage){
     return ProjectModel.findOne({ _id: req.body.episode }).exec();
   })
