@@ -52,4 +52,6 @@ block content
     td
     td
     td
-      a(href="/stages/new/") Add
+      - var url_obj = { fresh: true };
+      - var string_obj = JSON.stringify(url_obj);
+      a(href="/stages/new/"+string_obj) Add

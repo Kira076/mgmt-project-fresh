@@ -37,7 +37,7 @@ router.get('/credit/:creditID', function(req, res){
 router.get('/new/:jsonObj', function(req, res){
   var data = JSON.parse(req.params.jsonObj);
 
-  if(data == {}){
+  if(data.fresh){
     CrewModel.find({}, '_id name', function(err, crew){
       if(err){
         res.send(err);
