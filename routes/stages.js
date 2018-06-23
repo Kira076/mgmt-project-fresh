@@ -58,11 +58,12 @@ router.get('/new/:jsonObj', function(req, res){
     if(data == {}){
       return ProjectModel.find({}, '_id title').exec();
     } else {
-      return new Promise(resolve => "for");
       console.log("Returning new promise, as data was provided");
+      return new Promise(resolve => "for");
     }
   })
   .then(function(result){
+    console.log("About to render");
     res.render('newstage', {
       title: 'Add Stage',
       credlist: credlist,
