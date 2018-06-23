@@ -18,11 +18,11 @@ block content
     a(href="/crew/member/"+data.crew_id._id) #{data.crew_id.name}
     br
     - var tbr = { credit: data._id, crew: data.crew_id._id };
-    - var string_tbr = Buffer(JSON.stringify(tbr)).tostring('base64');
+    - var string_tbr = Buffer.from(JSON.stringify(tbr)).tostring('base64');
     a(href="/credits/remove/"+string_tbr) Remove
   else
     - var url_obj = { action: 'toCredit', credit: data._id };
-    - var string_obj = Buffer(JSON.stringify(url_obj)).tostring('base64');
+    - var string_obj = Buffer.from(JSON.stringify(url_obj)).tostring('base64');
     a(href="/credits/attach/"+stringObj) Attach
   br
   h3.
@@ -46,5 +46,5 @@ block content
       td
       td
         - var url_data = { type: "credit", target: data._id };
-        - var string_data = Buffer(JSON.stringify(url_data)).tostring('base64');
+        - var string_data = Buffer.from(JSON.stringify(url_data)).tostring('base64');
         a(href="/notes/new/"+string_data) Add

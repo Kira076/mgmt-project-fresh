@@ -77,7 +77,7 @@ block content
       td
       td
         - var url_data = { type: "project", target: data._id };
-        - var string_data = Buffer(JSON.stringify(url_data)).tostring('base64');
+        - var string_data = Buffer.from(JSON.stringify(url_data)).tostring('base64');
         a(href="/notes/new/"+string_data) Add
   h4.
     Stages
@@ -122,7 +122,7 @@ block content
               br
           td
             - var url_obj = { stage: entry._id, episode: data._id };
-            - var string_obj = Buffer(JSON.stringify(url_obj)).tostring('base64');
+            - var string_obj = Buffer.from(JSON.stringify(url_obj)).tostring('base64');
             a(href="/stages/remove/"+stringObj) Remove
       tr
         td
@@ -134,10 +134,10 @@ block content
         td
         td
           - var url_obj = { target: data._id };
-          - var string_obj = Buffer(JSON.stringify(url_obj)).tostring('base64');
+          - var string_obj = Buffer.from(JSON.stringify(url_obj)).tostring('base64');
           a(href="/stages/new/"+string_obj) Add
           br
           br
           - var url_obj = { action: 'toEpisode', episode: data._id };
-          - var string_obj = Buffer(JSON.stringify(url_obj)).tostring('base64');
+          - var string_obj = Buffer.from(JSON.stringify(url_obj)).tostring('base64');
           a(href="/stagess/attach/"+string_obj) Attach
