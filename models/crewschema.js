@@ -5,8 +5,8 @@ var uniquearray = require('mongoose-unique-array');
 var Schema = mongoose.Schema;
 
 var CrewSchema = new Schema({
-  name: { type: String, required: true, index: true },
-  interval: { type: String, enum: ['Weekly', "Monthly"], required: true },
+  name: { type: String, index: true }, //req
+  interval: { type: String, enum: ['Weekly', "Monthly"] }, //req
   completed: { type: Number, default: 0 },
   queue: { type: Number, default: 0 },
   credits: [{ type: Schema.Types.ObjectId, ref: 'Credit', autopopulate: true }],
@@ -15,6 +15,11 @@ var CrewSchema = new Schema({
 
 CrewSchema.virtual('url').get(function(){
   return '/crew/member/' + this._id;
+});
+
+CrewSchema.pre('remove', function(next){
+  var crew = this;
+  crew.model('Credit').update({ crew_id: { $in: crew._id } }, { $unset: { crew_id: 1 } }, { multi: true }, next);
 });
 
 CrewSchema.plugin(autopop);

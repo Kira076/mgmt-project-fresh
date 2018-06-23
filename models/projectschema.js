@@ -17,8 +17,9 @@ var ProjectSchema = new Schema({
   checks: [{  }]
 });
 
-ProjectSchema.virtual('additional_crew').get(function(){
-  return this.additional_credits.values();
+ProjectSchema.pre('remove', function(next){
+  var project = this;
+  project.model('Stage').update({ episode: project._id }, { $unset: { episode: 1 } }, { multi: true }, next);
 });
 
 ProjectSchema.plugin(autopop);
