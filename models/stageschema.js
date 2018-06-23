@@ -27,12 +27,4 @@ StageSchema.plugin(uniquearray);
 
 var StageModel = mongoose.model('Stage', StageSchema);
 
-StageSchema.pre('init', function(data){
-  StageModel.populate(data, {
-    path: 'episode lead primary other_credits notes'
-  }, function(err, stage){
-    data = stage;
-  });
-});
-
 module.exports = StageModel;

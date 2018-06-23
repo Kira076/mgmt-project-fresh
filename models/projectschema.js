@@ -25,12 +25,4 @@ ProjectSchema.plugin(uniquearray);
 
 var ProjectModel = mongoose.model('Project', ProjectSchema);
 
-ProjectSchema.pre('init', function(data){
-  ProjectModel.populate(data, {
-    path: 'director other_credits stages notes'
-  }, function(err, proj){
-    data = proj;
-  });
-});
-
 module.exports = ProjectModel;
