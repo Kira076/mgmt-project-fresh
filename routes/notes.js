@@ -24,7 +24,7 @@ router.get('/:noteID', function(req, res){
 });
 
 router.get('/new/:jsonObj', function(req, res){
-  var data = JSON.parse(Buffer(req.params.jsonObj).tostring());
+  var data = JSON.parse(Buffer(req.params.jsonObj).toString());
 
   res.render('newnote', {
     title: 'Add Note',

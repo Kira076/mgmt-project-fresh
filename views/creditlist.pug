@@ -32,5 +32,5 @@ block content
       td
       td
         - var url_obj = { fresh: true };
-        - var string_obj = Buffer.from(JSON.stringify(url_obj)).tostring('base64');
+        - var string_obj = Buffer.from(JSON.stringify(url_obj)).toString('base64');
         a(href="/credits/new/"+string_obj) Add
