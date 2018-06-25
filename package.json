@@ -18,6 +18,14 @@
     "mongoose-unique-array": "^0.2.0",
     "morgan": "~1.9.0",
     "pug": "2.0.0-beta11",
-    "stylus": "0.54.5"
+    "pug-plain-loader": "^1.0.0",
+    "stylus": "^0.54.5",
+    "vue": "^2.5.16",
+    "vue-loader": "^15.2.4",
+    "webpack": "^4.12.1",
+    "webpack-cli": "^3.0.8"
+  },
+  "devDependencies": {
+    "stylus-loader": "^3.0.2"
   }
 }
