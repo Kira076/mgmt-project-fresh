@@ -42,88 +42,131 @@ block content
           a(href="/projects/episode/"+proj._id) #{proj.title}
         td(class="tracker_director")
           a(href="/credits/credit/"+proj.director._id) #{proj.director.name}
+        - var now = moment(new Date());
         td
           each stage in proj.stages
             if stage.stage_type == 0
+              - let duration = now.diff(moment(stage.start_date), "days");
               a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+              br
+              span #{duration}
             else
               span &nbsp;
         td
           each stage in proj.stages
             if stage.stage_type == 1
+              - let duration = now.diff(moment(stage.start_date), "days");
               a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+              br
+              span #{duration}
             else
               span &nbsp;
         td
           each stage in proj.stages
             if stage.stage_type == 2
+              - let duration = now.diff(moment(stage.start_date), "days");
               a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+              br
+              span #{duration}
             else
               span &nbsp;
         td
           each stage in proj.stages
             if stage.stage_type == 3
+              - let duration = now.diff(moment(stage.start_date), "days");
               a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+              br
+              span #{duration}
             else
               span &nbsp;
         td
           each stage in proj.stages
             if stage.stage_type == 4
+              - let duration = now.diff(moment(stage.start_date), "days");
               a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+              br
+              span #{duration}
             else
               span &nbsp;
         td
           each stage in proj.stages
             if stage.stage_type == 5
+              - let duration = now.diff(moment(stage.start_date), "days");
               a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+              br
+              span #{duration}
             else
               span &nbsp;
         td
           each stage in proj.stages
             if stage.stage_type == 6
+              - let duration = now.diff(moment(stage.start_date), "days");
               a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+              br
+              span #{duration}
             else
               span &nbsp;
         td
           each stage in proj.stages
             if stage.stage_type == 7
+              - let duration = now.diff(moment(stage.start_date), "days");
               a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+              br
+              span #{duration}
             else
               span &nbsp;
         td
           each stage in proj.stages
             if stage.stage_type == 8
+              - let duration = now.diff(moment(stage.start_date), "days");
               a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+              br
+              span #{duration}
             else
               span &nbsp;
         td
           each stage in proj.stages
             if stage.stage_type == 9
+              - let duration = now.diff(moment(stage.start_date), "days");
               a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+              br
+              span #{duration}
             else
               span &nbsp;
         td
           each stage in proj.stages
             if stage.stage_type == 10
+              - let duration = now.diff(moment(stage.start_date), "days");
               a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+              br
+              span #{duration}
             else
               span &nbsp;
         td
           each stage in proj.stages
             if stage.stage_type == 11
+              - let duration = now.diff(moment(stage.start_date), "days");
               a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+              br
+              span #{duration}
             else
               span &nbsp;
         td
           each stage in proj.stages
             if stage.stage_type == 12
+              - let duration = now.diff(moment(stage.start_date), "days");
               a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+              br
+              span #{duration}
             else
               span &nbsp;
         td
           each stage in proj.stages
             if stage.stage_type == 13
+              - let duration = now.diff(moment(stage.start_date), "days");
               a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+              br
+              span #{duration}
             else
               span &nbsp;
         if proj.finish_date

@@ -39,7 +39,7 @@ block content
     Lead
   if data.lead
     if data.lead.id
-      a(href="/crew/member/"+data.lead.id) #{data.lead.name}
+      a(href="/credits/credit/"+data.lead.id) #{data.lead.name}
     else
       span #{data.lead.name}
   else
@@ -48,7 +48,7 @@ block content
   h4.
     Primary
   if data.primary.id
-    a(href="/crew/member/"+data.primary.id) #{data.primary.name}
+    a(href="/credits/credit/"+data.primary.id) #{data.primary.name}
   else
     #{data.primary.name}
   br
