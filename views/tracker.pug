@@ -40,76 +40,90 @@ block content
         td #{moment(proj.start_date).format("YYYY-MM-DD")}
         td #{proj.title}
         td #{proj.director.name}
-        each stage in proj.stages
-          if stage.type == 0
-            td #{stage.primary.name}
-          else
-            td
-        each stage in proj.stages
-          if stage.type == 1
-            td #{stage.primary.name}
-          else
-            td
-        each stage in proj.stages
-          if stage.type == 2
-            td #{stage.primary.name}
-          else
-            td
-        each stage in proj.stages
-          if stage.type == 3
-            td #{stage.primary.name}
-          else
-            td
-        each stage in proj.stages
-          if stage.type == 4
-            td #{stage.primary.name}
-          else
-            td
-        each stage in proj.stages
-          if stage.type == 5
-            td #{stage.primary.name}
-          else
-            td
-        each stage in proj.stages
-          if stage.type == 6
-            td #{stage.primary.name}
-          else
-            td
-        each stage in proj.stages
-          if stage.type == 7
-            td #{stage.primary.name}
-          else
-            td
-        each stage in proj.stages
-          if stage.type == 8
-            td #{stage.primary.name}
-          else
-            td
-        each stage in proj.stages
-          if stage.type == 9
-            td #{stage.primary.name}
-          else
-            td
-        each stage in proj.stages
-          if stage.type == 10
-            td #{stage.primary.name}
-          else
-            td
-        each stage in proj.stages
-          if stage.type == 11
-            td #{stage.primary.name}
-          else
-            td
-        each stage in proj.stages
-          if stage.type == 12
-            td #{stage.primary.name}
-          else
-            td
-        each stage in proj.stages
-          if stage.type == 13
-            td #{stage.primary.name}
-          else
-            td
+        td
+          each stage in proj.stages
+            if stage.type == 0
+              span #{stage.primary.name}
+            else
+              span &nbsp;
+        td
+          each stage in proj.stages
+            if stage.type == 1
+              span #{stage.primary.name}
+            else
+              span &nbsp;
+        td
+          each stage in proj.stages
+            if stage.type == 2
+              span #{stage.primary.name}
+            else
+              span &nbsp;
+        td
+          each stage in proj.stages
+            if stage.type == 3
+              span #{stage.primary.name}
+            else
+              span &nbsp;
+        td
+          each stage in proj.stages
+            if stage.type == 4
+              span #{stage.primary.name}
+            else
+              span &nbsp;
+        td
+          each stage in proj.stages
+            if stage.type == 5
+              span #{stage.primary.name}
+            else
+              span &nbsp;
+        td
+          each stage in proj.stages
+            if stage.type == 6
+              span #{stage.primary.name}
+            else
+              span &nbsp;
+        td
+          each stage in proj.stages
+            if stage.type == 7
+              span #{stage.primary.name}
+            else
+              span &nbsp;
+        td
+          each stage in proj.stages
+            if stage.type == 8
+              span #{stage.primary.name}
+            else
+              span &nbsp;
+        td
+          each stage in proj.stages
+            if stage.type == 9
+              span #{stage.primary.name}
+            else
+              span &nbsp;
+        td
+          each stage in proj.stages
+            if stage.type == 10
+              span #{stage.primary.name}
+            else
+              span &nbsp;
+        td
+          each stage in proj.stages
+            if stage.type == 11
+              span #{stage.primary.name}
+            else
+              span &nbsp;
+        td
+          each stage in proj.stages
+            if stage.type == 12
+              span #{stage.primary.name}
+            else
+              span &nbsp;
+        td
+          each stage in proj.stages
+            if stage.type == 13
+              span #{stage.primary.name}
+            else
+              span &nbsp;
         if proj.finish_date
           td #{moment(proj.finish_date).format("YYYY-MM-DD")}
         else
