@@ -5,6 +5,33 @@ block content
   h3.
     Stage Details (#{data.stage_name})
   h4.
+    Flags and Checks
+  table
+    tr
+      th Name
+      th Value
+      th Actions
+    if data.flags
+      each entry in data.flags
+        tr
+          td #{entry.type}
+          td #{entry.value}
+          td
+    if data.checks
+      each entry in data.checks
+        tr
+          td #{entry.type}
+          td #{entry.value}
+          td
+    tr
+      td
+      td
+      td
+        - var url_data = { target: data._id };
+        - var string_data = Buffer.from(JSON.stringify(url_data)).tostring('base64');
+        a(href="/stages/newflag/"+string_data) Add
+  br
+  h4.
     For episode
   a(href="/projects/episode/"+data.episode._id) #{data.episode.title}
   br

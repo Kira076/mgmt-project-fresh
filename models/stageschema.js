@@ -14,7 +14,9 @@ var StageSchema = new Schema({
   lead: { type: Schema.Types.ObjectId, ref: 'Credit', autopopulate: true },
   primary: { type: Schema.Types.ObjectId, ref: 'Credit', autopopulate: true }, //req
   other_credits: [{ type: Schema.Types.ObjectId, ref: 'Credit', autopopulate: true }],
-  notes: [{ type: Schema.Types.ObjectId, ref: 'Note', autopopulate: true }]
+  notes: [{ type: Schema.Types.ObjectId, ref: 'Note', autopopulate: true }],
+  flags: [{  }],
+  checks: [{  }]
 });
 
 StageSchema.virtual('stage_name').get(function(){

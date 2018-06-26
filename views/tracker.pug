@@ -1,0 +1,117 @@
+extends layout
+
+block content
+  a(href="/") Return Home
+  h3.
+    Tracker View
+  table
+    tr
+      th Deadline
+      th Released
+      th Started
+      th Episode
+      th Director
+      th Outline
+      th Storyboard
+      th Animation
+      th Color
+      th Thumbnail
+      th Pencil1
+      th Retime1
+      th Voice
+      th Retime2
+      th Music
+      th Retime3
+      th SFX
+      th Pencil2
+      th Export
+      th Finished
+      th Duration
+    each proj in projlist
+      tr
+        if proj.deadline
+          td #{moment(proj.deadline).format("YYYY-MM-DD")}
+        else
+          td
+        if proj.release_date
+          td #{moment(proj.release_date).format("YYYY-MM-DD")}
+        else
+          td
+        td #{moment(proj.start_date).format("YYYY-MM-DD")}
+        td #{proj.title}
+        td #{proj.director}
+        each stage in proj.stages
+          if stage.type == 0
+            td #{stage.primary.name}
+          else
+            td
+        each stage in proj.stages
+          if stage.type == 1
+            td #{stage.primary.name}
+          else
+            td
+        each stage in proj.stages
+          if stage.type == 2
+            td #{stage.primary.name}
+          else
+            td
+        each stage in proj.stages
+          if stage.type == 3
+            td #{stage.primary.name}
+          else
+            td
+        each stage in proj.stages
+          if stage.type == 4
+            td #{stage.primary.name}
+          else
+            td
+        each stage in proj.stages
+          if stage.type == 5
+            td #{stage.primary.name}
+          else
+            td
+        each stage in proj.stages
+          if stage.type == 6
+            td #{stage.primary.name}
+          else
+            td
+        each stage in proj.stages
+          if stage.type == 7
+            td #{stage.primary.name}
+          else
+            td
+        each stage in proj.stages
+          if stage.type == 8
+            td #{stage.primary.name}
+          else
+            td
+        each stage in proj.stages
+          if stage.type == 9
+            td #{stage.primary.name}
+          else
+            td
+        each stage in proj.stages
+          if stage.type == 10
+            td #{stage.primary.name}
+          else
+            td
+        each stage in proj.stages
+          if stage.type == 11
+            td #{stage.primary.name}
+          else
+            td
+        each stage in proj.stages
+          if stage.type == 12
+            td #{stage.primary.name}
+          else
+            td
+        each stage in proj.stages
+          if stage.type == 13
+            td #{stage.primary.name}
+          else
+            td
+        if proj.finish_date
+          td #{moment(proj.finish_date).format("YYYY-MM-DD")}
+        else
+          td
+        td

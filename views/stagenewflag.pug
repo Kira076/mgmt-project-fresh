@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h3= title
+  form#form_add_stage(name="addflag", method="post",
+  action="/stages/addflag")
+    span Type
+    span &nbsp;
+    input#input_flag_type(list="flag_type_list",
+    name="type")
+    datalist#flag_type_list
+      each type in flag_types
+        option#flag_type_option_item(value=flag_types.indexOf(type)) #{type}
+    br
+    span Value
+    span &nbsp;
+    input#input_flag_value(type="text", placeholder="Value",
+    name="value")
+    br
+    span Status
+    span &nbsp;
+    input#input_flag_status(list="flag_status_list",
+    name="status")
+    datalist#flag_status_list
+      option#flag_status_option_item(value=0) Resolved/Inactive
+      option#flag_status_option_item(value=1) Active
+    br
+    input#input_flag_target(type="text", value=target,
+    hidden)
+    br
+    button#submit_stage(type="submit") submit

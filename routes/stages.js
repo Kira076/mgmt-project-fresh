@@ -47,6 +47,16 @@ router.get('/delete/:stageID', function(req, res){
   });
 });
 
+router.get('/newflag/:jsonObj', function(req, res){
+  var data = JSON.parse(Buffer.from(req.params.jsonObj, 'base64').toString());
+
+  res.render('stagenewflag', {
+    title: 'Add Flag',
+    flag_types: maps.flag_types,
+    target: data.target
+  });
+});
+
 router.get('/new/:jsonObj', function(req, res){
   var data = JSON.parse(Buffer.from(req.params.jsonObj, 'base64').toString());
   var credlist;
@@ -71,6 +81,22 @@ router.get('/new/:jsonObj', function(req, res){
       target: data.target,
       stage_names: maps.stage_names
     });
+  })
+  .catch(function(error){
+    res.send(error);
+  });
+});
+
+router.post('/addflag', function(req, res){
+  var flag = { type: req.body.type, value: req.body.value, status: req.body.status };
+
+  StageModel.findOne({ _id: req.body.target }).exec()
+  .then(function(stage){
+    stage.flags.push(flag);
+    return stage.save();
+  })
+  .then(function(stage){
+    res.redirect('stage/'+req.body.target);
   })
   .catch(function(error){
     res.send(error);

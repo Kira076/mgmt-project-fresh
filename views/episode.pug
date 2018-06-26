@@ -5,23 +5,6 @@ block content
   h3.
     Project Details (#{data.title})
   h4.
-    Flags and Checks
-  table
-    tr
-      th Name
-      th Value
-    if data.flags
-      each entry in data.flags
-        tr
-          td #{entry.type}
-          td #{entry.value}
-    if data.checks
-      each entry in data.checks
-        tr
-          td #{entry.type}
-          td #{entry.value}
-  br
-  h4.
     Director
   if data.director.id
     a(href="/crew/member/"+data.director.id) #{data.director.name}
@@ -38,6 +21,20 @@ block content
     span #{moment(data.finish_date).format("YYYY-MM-DD")}
   else
     span Unfinished
+  br
+  h4.
+    Deadline
+  if data.deadline
+    span #{moment(data.deadline).format("YYYY-MM-DD")}
+  else
+    span None
+  br
+  h4.
+    Release Date
+  if data.release_date
+    span #{moment(data.release_date).format("YYYY-MM-DD")}
+  else
+    span Not Released
   br
   h4.
     Other Credits

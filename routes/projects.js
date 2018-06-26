@@ -60,8 +60,28 @@ router.get('/delete/:projID', function(req, res){
   });
 });
 
+router.get('/tracker', function(req, res){
+  ProjectModel.find().exec()
+  .then(function(projects){
+    res.render('tracker', {
+      title: 'Tracker View',
+      projlist: projects
+    });
+  })
+  .catch(function(err){
+    res.send(err);
+  });
+})
+
 router.post('/add', function(req, res){
-  var obj = { title: req.body.title, start_date: req.body.start_date, director: req.body.director };
+  var obj = {
+    title: req.body.title,
+    start_date: req.body.start_date,
+    director: req.body.director,
+    finish_date: req.body.finish_date,
+    release_date: req.body.release_date,
+    deadline: req.body.deadline
+  };
   var proj1 = new ProjectModel(obj);
 
   proj1.save(function(err){

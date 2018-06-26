@@ -34,6 +34,18 @@ block content
     name="start_date")
     br
     br
+    span Finish Date
+    span &nbsp;
+    input#input_start(type="date", placeholder="01/01/2018",
+    name="finish_date")
+    br
+    br
+    span Deadline
+    span &nbsp;
+    input#input_start(type="date", placeholder="01/01/2018",
+    name="deadline")
+    br
+    br
     span Primary
     span &nbsp;
     input#input_stage_primary(list="credit_data",
@@ -41,4 +53,5 @@ block content
     datalist#credit_data
       each credit in credlist
         option#credit_option_item(value=credit._id) #{credit.credit} #{credit.name}
+    br
     button#submit_stage(type="submit") submit
