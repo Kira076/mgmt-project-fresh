@@ -38,9 +38,9 @@ block content
         else
           td
         td #{moment(proj.start_date).format("YYYY-MM-DD")}
-        td 
+        td(class="tracker_episode")
           a(href="/projects/episode/"+proj._id) #{proj.title}
-        td 
+        td(class="tracker_director")
           a(href="/credits/credit/"+proj.director._id) #{proj.director.name}
         td
           each stage in proj.stages
