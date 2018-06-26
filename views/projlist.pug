@@ -13,7 +13,6 @@ block content
       th Start Date
       th Finish Date
       th Director
-      th Flags
       th Actions
     each proj, p in projlist
       tr#proj_list_item
@@ -27,10 +26,6 @@ block content
             span
         td
           a(href="/crew/member/"+proj.director._id) #{proj.director.name}
-        td
-          each flag in proj.flags
-            span #{flag.type}
-            br
         td
           a(href="/projects/delete/"+proj._id) Delete
     tr
