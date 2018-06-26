@@ -45,7 +45,6 @@ block content
         td
           each stage in proj.stages
             if stage.stage_type == 0
-              a(href="/stages/stage/"+stage._id) #{stage.stage_name}
               span #{stage.primary.name}
             else
               span &nbsp;
