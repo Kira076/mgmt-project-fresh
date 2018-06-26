@@ -39,7 +39,7 @@ block content
           td
         td #{moment(proj.start_date).format("YYYY-MM-DD")}
         td #{proj.title}
-        td #{proj.director}
+        td #{proj.director.name}
         each stage in proj.stages
           if stage.type == 0
             td #{stage.primary.name}
