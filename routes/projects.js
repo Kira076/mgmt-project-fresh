@@ -65,7 +65,8 @@ router.get('/tracker', function(req, res){
   .then(function(projects){
     res.render('tracker', {
       title: 'Tracker View',
-      projlist: projects
+      projlist: projects,
+      moment: moment
     });
   })
   .catch(function(err){
