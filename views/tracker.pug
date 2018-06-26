@@ -9,8 +9,8 @@ block content
       th Deadline
       th Released
       th Started
-      th Episode
-      th Director
+      th(class="tracker_episode") Episode
+      th(class="tracker_director") Director
       th Outline
       th Storyboard
       th Animation
@@ -45,6 +45,7 @@ block content
         td
           each stage in proj.stages
             if stage.type == 0
+              a(href="/stages/stage/"+stage._id) #{stage.stage_name}
               span #{stage.primary.name}
             else
               span &nbsp;
