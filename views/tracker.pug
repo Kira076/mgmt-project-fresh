@@ -4,173 +4,174 @@ block content
   a(href="/") Return Home
   h3.
     Tracker View
-  table(class="tracker")
-    tr
-      th Deadline
-      th Released
-      th Started
-      th(class="tracker_episode") Episode
-      th(class="tracker_director") Director
-      th Outline
-      th Storyboard
-      th Animation
-      th Color
-      th Thumbnail
-      th Pencil1
-      th Retime1
-      th Voice
-      th Retime2
-      th Music
-      th Retime3
-      th SFX
-      th Pencil2
-      th Export
-      th Finished
-      th Duration
-    each proj in projlist
+  div
+    table(class="tracker")
       tr
-        if proj.deadline
-          td #{moment(proj.deadline).format("YYYY-MM-DD")}
-        else
-          td
-        if proj.release_date
-          td #{moment(proj.release_date).format("YYYY-MM-DD")}
-        else
-          td
-        td #{moment(proj.start_date).format("YYYY-MM-DD")}
-        td(class="tracker_episode")
-          a(href="/projects/episode/"+proj._id) #{proj.title}
-        td(class="tracker_director")
-          a(href="/credits/credit/"+proj.director._id) #{proj.director.name}
-        - var now = moment(new Date());
-        td
-          each stage in proj.stages
-            if stage.stage_type == 0
-              - let duration = now.diff(moment(stage.start_date), "days");
-              a(href="/stages/stage/"+stage._id) #{stage.primary.name}
-              br
-              span (#{duration}d)
+        th Deadline
+        th Released
+        th Started
+        th(class="tracker_episode") Episode
+        th(class="tracker_director") Director
+        th Outline
+        th Storyboard
+        th Animation
+        th Color
+        th Thumbnail
+        th Pencil1
+        th Retime1
+        th Voice
+        th Retime2
+        th Music
+        th Retime3
+        th SFX
+        th Pencil2
+        th Export
+        th Finished
+        th Duration
+        each proj in projlist
+          tr
+            if proj.deadline
+              td #{moment(proj.deadline).format("YYYY-MM-DD")}
             else
-              span &nbsp;
-        td
-          each stage in proj.stages
-            if stage.stage_type == 1
-              - let duration = now.diff(moment(stage.start_date), "days");
-              a(href="/stages/stage/"+stage._id) #{stage.primary.name}
-              br
-              span (#{duration}d)
+              td
+            if proj.release_date
+              td #{moment(proj.release_date).format("YYYY-MM-DD")}
             else
-              span &nbsp;
-        td
-          each stage in proj.stages
-            if stage.stage_type == 2
-              - let duration = now.diff(moment(stage.start_date), "days");
-              a(href="/stages/stage/"+stage._id) #{stage.primary.name}
-              br
-              span (#{duration}d)
+              td
+            td #{moment(proj.start_date).format("YYYY-MM-DD")}
+            td(class="tracker_episode")
+              a(href="/projects/episode/"+proj._id) #{proj.title}
+            td(class="tracker_director")
+              a(href="/credits/credit/"+proj.director._id) #{proj.director.name}
+            - var now = moment(new Date());
+            td
+              each stage in proj.stages
+                if stage.stage_type == 0
+                  - let duration = now.diff(moment(stage.start_date), "days");
+                  a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+                  br
+                  span (#{duration}d)
+                else
+                  span &nbsp;
+            td
+              each stage in proj.stages
+                if stage.stage_type == 1
+                  - let duration = now.diff(moment(stage.start_date), "days");
+                  a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+                  br
+                  span (#{duration}d)
+                else
+                  span &nbsp;
+            td
+              each stage in proj.stages
+                if stage.stage_type == 2
+                  - let duration = now.diff(moment(stage.start_date), "days");
+                  a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+                  br
+                  span (#{duration}d)
+                else
+                  span &nbsp;
+            td
+              each stage in proj.stages
+                if stage.stage_type == 3
+                  - let duration = now.diff(moment(stage.start_date), "days");
+                  a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+                  br
+                  span (#{duration}d)
+                else
+                  span &nbsp;
+            td
+              each stage in proj.stages
+                if stage.stage_type == 4
+                  - let duration = now.diff(moment(stage.start_date), "days");
+                  a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+                  br
+                  span (#{duration}d)
+                else
+                  span &nbsp;
+            td
+              each stage in proj.stages
+                if stage.stage_type == 5
+                  - let duration = now.diff(moment(stage.start_date), "days");
+                  a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+                  br
+                  span (#{duration}d)
+                else
+                  span &nbsp;
+            td
+              each stage in proj.stages
+                if stage.stage_type == 6
+                  - let duration = now.diff(moment(stage.start_date), "days");
+                  a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+                  br
+                  span (#{duration}d)
+                else
+                  span &nbsp;
+            td
+              each stage in proj.stages
+                if stage.stage_type == 7
+                  - let duration = now.diff(moment(stage.start_date), "days");
+                  a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+                  br
+                  span (#{duration}d)
+                else
+                  span &nbsp;
+            td
+              each stage in proj.stages
+                if stage.stage_type == 8
+                  - let duration = now.diff(moment(stage.start_date), "days");
+                  a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+                  br
+                  span (#{duration}d)
+                else
+                  span &nbsp;
+            td
+              each stage in proj.stages
+                if stage.stage_type == 9
+                  - let duration = now.diff(moment(stage.start_date), "days");
+                  a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+                  br
+                  span (#{duration}d)
+                else
+                  span &nbsp;
+            td
+              each stage in proj.stages
+                if stage.stage_type == 10
+                  - let duration = now.diff(moment(stage.start_date), "days");
+                  a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+                  br
+                  span (#{duration}d)
+                else
+                  span &nbsp;
+            td
+              each stage in proj.stages
+                if stage.stage_type == 11
+                  - let duration = now.diff(moment(stage.start_date), "days");
+                  a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+                  br
+                  span (#{duration}d)
+                else
+                  span &nbsp;
+            td
+              each stage in proj.stages
+                if stage.stage_type == 12
+                  - let duration = now.diff(moment(stage.start_date), "days");
+                  a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+                  br
+                  span (#{duration}d)
+                else
+                  span &nbsp;
+            td
+              each stage in proj.stages
+                if stage.stage_type == 13
+                  - let duration = now.diff(moment(stage.start_date), "days");
+                  a(href="/stages/stage/"+stage._id) #{stage.primary.name}
+                  br
+                  span (#{duration}d)
+                else
+                  span &nbsp;
+            if proj.finish_date
+              td #{moment(proj.finish_date).format("YYYY-MM-DD")}
             else
-              span &nbsp;
-        td
-          each stage in proj.stages
-            if stage.stage_type == 3
-              - let duration = now.diff(moment(stage.start_date), "days");
-              a(href="/stages/stage/"+stage._id) #{stage.primary.name}
-              br
-              span (#{duration}d)
-            else
-              span &nbsp;
-        td
-          each stage in proj.stages
-            if stage.stage_type == 4
-              - let duration = now.diff(moment(stage.start_date), "days");
-              a(href="/stages/stage/"+stage._id) #{stage.primary.name}
-              br
-              span (#{duration}d)
-            else
-              span &nbsp;
-        td
-          each stage in proj.stages
-            if stage.stage_type == 5
-              - let duration = now.diff(moment(stage.start_date), "days");
-              a(href="/stages/stage/"+stage._id) #{stage.primary.name}
-              br
-              span (#{duration}d)
-            else
-              span &nbsp;
-        td
-          each stage in proj.stages
-            if stage.stage_type == 6
-              - let duration = now.diff(moment(stage.start_date), "days");
-              a(href="/stages/stage/"+stage._id) #{stage.primary.name}
-              br
-              span (#{duration}d)
-            else
-              span &nbsp;
-        td
-          each stage in proj.stages
-            if stage.stage_type == 7
-              - let duration = now.diff(moment(stage.start_date), "days");
-              a(href="/stages/stage/"+stage._id) #{stage.primary.name}
-              br
-              span (#{duration}d)
-            else
-              span &nbsp;
-        td
-          each stage in proj.stages
-            if stage.stage_type == 8
-              - let duration = now.diff(moment(stage.start_date), "days");
-              a(href="/stages/stage/"+stage._id) #{stage.primary.name}
-              br
-              span (#{duration}d)
-            else
-              span &nbsp;
-        td
-          each stage in proj.stages
-            if stage.stage_type == 9
-              - let duration = now.diff(moment(stage.start_date), "days");
-              a(href="/stages/stage/"+stage._id) #{stage.primary.name}
-              br
-              span (#{duration}d)
-            else
-              span &nbsp;
-        td
-          each stage in proj.stages
-            if stage.stage_type == 10
-              - let duration = now.diff(moment(stage.start_date), "days");
-              a(href="/stages/stage/"+stage._id) #{stage.primary.name}
-              br
-              span (#{duration}d)
-            else
-              span &nbsp;
-        td
-          each stage in proj.stages
-            if stage.stage_type == 11
-              - let duration = now.diff(moment(stage.start_date), "days");
-              a(href="/stages/stage/"+stage._id) #{stage.primary.name}
-              br
-              span (#{duration}d)
-            else
-              span &nbsp;
-        td
-          each stage in proj.stages
-            if stage.stage_type == 12
-              - let duration = now.diff(moment(stage.start_date), "days");
-              a(href="/stages/stage/"+stage._id) #{stage.primary.name}
-              br
-              span (#{duration}d)
-            else
-              span &nbsp;
-        td
-          each stage in proj.stages
-            if stage.stage_type == 13
-              - let duration = now.diff(moment(stage.start_date), "days");
-              a(href="/stages/stage/"+stage._id) #{stage.primary.name}
-              br
-              span (#{duration}d)
-            else
-              span &nbsp;
-        if proj.finish_date
-          td #{moment(proj.finish_date).format("YYYY-MM-DD")}
-        else
-          td
-        td
+              td
+            td
